@@ -1,0 +1,15 @@
+compile/*.o
+compile/*.map
+*.a
+*~
+.,*
+xinu
+xinu.bin
+xinu.xbin
+xinu.elf
+compile/.defs
+.deps
+.jed_100
+compile/.vers_num
+compile/version
+.vscode/

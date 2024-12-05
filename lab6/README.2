@@ -1,0 +1,93 @@
+
+/*------------------------------------------------------------------------
+ * get_index_oldest_frame_regionE1  -  Returns the index in kernel data structure 
+                                        fHolderListE1 of the oldest frame in E1 (FIFO)
+ *------------------------------------------------------------------------
+ */
+int get_index_oldest_frame_regionE1();
+
+
+/*------------------------------------------------------------------------
+ * get_matching_frame_from_regionE2  -  Returns the index of the frame in E2 
+                                        that contains content corresponding 
+                                        to the virtual address `vaddr` 
+                                        of the current process with pid `currpid`
+ *------------------------------------------------------------------------
+ */
+int get_matching_frame_from_regionE2(v32addr_t vaddr);
+
+
+/*------------------------------------------------------------------------
+ * free_frame_in_regionE2 -  Update fHolderListE2 to reuse frames. Mark 
+                                frame in E2 as unused
+ *------------------------------------------------------------------------
+ */
+void free_frame_in_regionE2(v32addr_t vaddr, pid32 owner_pid);
+
+
+/*------------------------------------------------------------------------
+ * get_empty_frame_from_regionE2 -  Return absolute address of empty frame 
+                                    from region E2. The kernel data structure
+                                    is updated to include the virtual address
+                                    `vaddr` and owner process `pid` that
+                                    te frame corresponds to
+ *------------------------------------------------------------------------
+ */
+char* get_empty_frame_from_regionE2(v32addr_t vaddr, pid32 pid);
+
+
+/*------------------------------------------------------------------------
+ * purge_frames_E2 -  Purge all frames in E2 whose `owner_process` matches pid
+ *------------------------------------------------------------------------
+ */
+uint32 purge_frames_fHolderListE2(pid32 pid);
+
+
+/*------------------------------------------------------------------------
+ * ready_framewait_process -  Make processes in state PR_FRAMEWAIT PR_READY
+ *------------------------------------------------------------------------
+ */
+void ready_framewait_process();
+
+
+
+/*------------------------------------------------------------------------
+ * deallocate_frames_E2 -  Deallocate frames in E1 starting from virtual 
+                            address `start_vaddr` and upto `npages` corresponding
+                            to process with pid `owner_pid`
+ *------------------------------------------------------------------------
+ */
+void deallocate_frames_E2(v32addr_t start_vaddr, uint16 npages, pid32 owner_pid);
+
+
+/*------------------------------------------------------------------------
+ * get_number_allocated_frames_E1 -  Get number of allocated frames in E1
+                                    for process `pid` (used only for testing)
+ *------------------------------------------------------------------------
+ */
+uint32 get_number_allocated_frames_E1(pid32 pid);
+
+
+
+/*------------------------------------------------------------------------
+ * get_number_allocated_frames_E2 -  Get number of allocated frames in E2 
+                                    for process `pid` (used only for testing)
+ *------------------------------------------------------------------------
+ */
+uint32 get_number_allocated_frames_E2(pid32 pid);
+
+
+/*------------------------------------------------------------------------
+ * display_E1_oldest_frame_details -  Display fHolderList details of oldest frame in E1
+                                     (used only for testing)
+ *------------------------------------------------------------------------
+ */
+void display_E1_oldest_frame_details(uint32 oldest_frame_index_E1, pid32 pid);
+
+
+
+/*------------------------------------------------------------------------
+ * proctab status - print the status of proctab  data structure (used only for testing)
+ *------------------------------------------------------------------------
+ */
+void display_proctab();
